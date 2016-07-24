@@ -8,18 +8,36 @@ A sample to demo microservices core components i.e centralized configuration ser
 
 3. sample-todo-service : A service which provides following operations
 
-a. POST /to-do-app/tasks : To create a to-do task.
-b. GET /to-do-app/tasks : To list out all to-do tasks created so far.
-c. GET /to-do-app/config : It retrieve one configuration property reply.message from configuration server i.e sample-config. 
+		a. POST /to-do-app/tasks : To create a to-do task.
+		b. GET /to-do-app/tasks : To list out all to-do tasks created so far.
+		c. GET /to-do-app/config : It retrieve one configuration property reply.message from configuration server i.e sample-config. 
 
 4. sample-todo-client : A client service which discover sample-todo-service from registery(i.e sample-registeration) and access its operations. It uses Spring-Eureka-DiscoveryClient for this. It has same set of operations as sample-todo-service. End user will access this service from REST Client.
 
-a. POST /to-do-app/tasks : It calls sample-todo-service POST /to-do-app/tasks.
-b. GET /to-do-app/tasks : It calls sample-todo-service GET /to-do-app/tasks.
-c. GET /to-do-app/config : It calls sample-to-service GET /to-do-app/config
+		a. POST /to-do-app/tasks : It calls sample-todo-service POST /to-do-app/tasks.
+		b. GET /to-do-app/tasks : It calls sample-todo-service GET /to-do-app/tasks.
+		c. GET /to-do-app/config : It calls sample-to-service GET /to-do-app/config
 
 
-# 
+# Running without docker
+
+Pre-requisite : Java 8, Maven 3.
+
+1. clone the repository from github.
+
+Example :
+C:\Practice\altimetric-microservices-2\repo> git clone https://github.com/mkdewangan/altimetric-microservices.git
+
+it will create altimetric-microservices folder under repo. i.e C:\Practice\altimetric-microservices-2\repo\altimetric-microservices
+
+2. Start Registration Server 
+
+Go to 
+
+
+
+
+
 
 
 
