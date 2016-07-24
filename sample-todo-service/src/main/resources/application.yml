@@ -1,0 +1,11 @@
+---
+server:
+  port: 8082
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    registryFetchIntervalSeconds: 5

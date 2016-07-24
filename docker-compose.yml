@@ -1,0 +1,40 @@
+sampleregistration:
+  image: "sample-registration:1.0.0-SNAPSHOT"
+  hostname: sampleregistration
+  ports:
+   - "8761:8761"
+
+sampleconfig:
+  image: "sample-config:1.0.0-SNAPSHOT"
+  hostname: sampleconfig
+  links:
+    - sampleregistration
+  environment:
+     EUREKA_HOST: sampleregistration
+     EUREKA_PORT: 8761
+  ports:
+    - "8888:8888"
+
+sampletodoservice:
+  image: "sample-todo-service:1.0.0-SNAPSHOT"
+  hostname: sampletodoservice
+  links:
+    - sampleregistration
+    - sampleconfig
+  environment:
+     EUREKA_HOST: sampleregistration
+     EUREKA_PORT: 8761
+  ports:
+    - "8082:8082"
+    
+sampletodoserviceclient:
+  image: "sample-todo-client:1.0.0-SNAPSHOT"
+  hostname: sampletodoserviceclient
+  links:
+    - sampleregistration
+    - sampletodoservice
+  environment:
+     EUREKA_HOST: sampleregistration
+     EUREKA_PORT: 8761
+  ports:
+    - "8084:8084"

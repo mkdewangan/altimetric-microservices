@@ -1,0 +1,4 @@
+
+Some Useful Commands:
+
+mvn spring-boot:run -Dserver.port=8082 -Deureka.instance.metadataMap.instanceId=instance2

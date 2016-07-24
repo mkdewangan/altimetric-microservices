@@ -1,0 +1,13 @@
+---
+spring:
+  application:
+    name: to-do-app-client
+    
+eureka:
+  instance:
+    nonSecurePort: ${server.port:8084}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/    
+
+  

@@ -1,0 +1,16 @@
+---
+spring:
+  application:
+    name: to-do-app
+  cloud:
+    config:
+      enabled: true
+      discovery:
+        enabled: true
+        serviceId: SAMPLE-CONFIG
+eureka:
+  instance:
+    nonSecurePort: ${server.port:8082}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
