@@ -19,20 +19,71 @@ A sample to demo microservices core components i.e centralized configuration ser
 		c. GET /to-do-app/config : It calls sample-to-service GET /to-do-app/config
 
 
-# Running without docker
+# Running without docker in amazon cloud
 
-Pre-requisite : Java 8, Maven 3.
+**Pre-requisite :** Amazon EC2 instance with 2GB RAM is setup and running. Instance type t2-small / t2-medium should be good enough. Java 8, Maven 3 is installed on it.
 
-1. clone the repository from github.
+ **1. clone the repository from github.**
 
-Example :
-C:\Practice\altimetric-microservices-2\repo> git clone https://github.com/mkdewangan/altimetric-microservices.git
+Example : 
+ubuntu@ip-172-31-56-18:~/altimetric/repo$ git clone https://github.com/mkdewangan/altimetric-microservices.git
 
-it will create altimetric-microservices folder under repo. i.e C:\Practice\altimetric-microservices-2\repo\altimetric-microservices
+It will create altimetric-microservices folder under repo. i.e /home/ubuntu/altimetric/repo/altimetric-microservices
 
-2. Start Registration Server 
+**2. Start Registration Server** 
 
-Go to 
+In command shell go to altimetric-microservices/sample-registration folder and run :  nohup mvn spring-boot:run & . It will start eureka registration server at port 8761. You can go to browser and check at http://host:8761/. You should see Spring-Eureka page.
+
+**3. Start Centralized Configuration Server**
+
+In command shell go to altimetric-microservices/sample-config folder and run :  " nohup mvn spring-boot:run &". It will start configuration server and register it with eureka. Now if you refresh the spring-eureka page at http://host:8761/, you should see one instance of application SAMPLE-CONFIG in registered application list.
+
+**4. Start To-Do Service App**
+
+In command shell go to   altimetric-microservices/sample-todo-service folder and run : " nohup mvn spring-boot:run &". It will start configuration server and register it with eureka. Now if you refresh the spring-eureka page at http://host:8761/, you should see one instance of application TO-DO-APP in registered application list.
+
+**5. Start To-DO Client App**
+
+In command shell go to   altimetric-microservices/sample-todo-client folder and run : " nohup mvn spring-boot:run &". It will start configuration server and register it with eureka. Now if you refresh the spring-eureka page at http://host:8761/, you should see one instance of application TO-DO-APP-CLIENT in registered application list.
+
+**6. Testing with Rest Client**
+When all the application is started and registration is completed, now turn is to test it. 
+Open any Rest Client and test following operations
+**(a)**  
+	POST  http://host:8084/to-do-app-client/tasks
+	Header :
+	Content-Type : application/json
+	Body :
+	{
+	  "taskId" : "1",
+	  "taskName" : "Grocery Purchase"
+	}
+	Response should be 
+	{
+	  "message": "Task added successfully."
+	}
+**(b)** 
+	GET http://host:8084/to-do-app-client/tasks
+	
+	In response, list of to-do tasks should be coming e.g.
+	
+	[
+	  {
+	    "taskId": 1,
+	    "taskName": "Grocery Purchase"
+	  },
+	  {
+	    "taskId": 2,
+	    "taskName": "Flight Ticket Booking over weekend"
+	  }
+	]
+
+**(c)** 
+	GET http://host:8084/to-do-app-client/config
+	
+	Response should be 
+	"Hello From Configuration Server"
+
 
 
 
