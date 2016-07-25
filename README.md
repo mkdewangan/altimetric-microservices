@@ -49,8 +49,9 @@ In command shell go to   altimetric-microservices/sample-todo-client folder and 
 **6. Testing with Rest Client**
 When all the application is started and registration is completed, now turn is to test it. 
 Open any Rest Client and test following operations
-**(a)**  
+**(a)**
 	POST  http://host:8084/to-do-app-client/tasks
+	
 	Header :
 	Content-Type : application/json
 	Body :
@@ -62,6 +63,9 @@ Open any Rest Client and test following operations
 	{
 	  "message": "Task added successfully."
 	}
+	
+	
+	
 **(b)** 
 	GET http://host:8084/to-do-app-client/tasks
 	
