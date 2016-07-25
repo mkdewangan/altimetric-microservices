@@ -88,11 +88,31 @@ Open any Rest Client and test following operations
 	Response should be 
 	"Hello From Configuration Server"
 
+# Running with docker in amazon cloud
 
+**Pre-requisite :** Amazon EC2 instance with 2GB RAM is setup and running. Instance type t2-small / t2-medium should be good enough. Java 8, Maven 3 is installed on it. Docker and Docker-Compose is installed on it.
 
+**1. Clone the repository from github.**
+GIT URL : https://github.com/mkdewangan/altimetric-microservices.git
+Example : 
+ubuntu@ip-172-31-56-18:~/altimetric/repo$ git clone https://github.com/mkdewangan/altimetric-microservices.git
 
+It will create altimetric-microservices folder under repo. i.e /home/ubuntu/altimetric/repo/altimetric-microservices
 
+**2. Create Docker Images**
+Run command "mvn clean package docker:build" at base folder i.e altimetric-microservices. It will create docker images for all four microservices.
 
+Example :
+root@ip-172-31-56-18:/home/ubuntu/altimetric/repo/altimetric-microservices# mvn clean package docker:build
 
+**3. Start all docker containers together**
 
+There is  script docker-compose.yml  in folder altimetric-microservices to start all docker containers created in (2).
 
+To start all containers, run below command at base folder i.e altimetric-microservices
+**docker-compose up**
+
+registration server, config server, to-do service and to-do client should be running in their respective containers in port 8761, 8888, 8082, 8084 respectively. In docker-compose.yml , these containers port has been mapped to host system same port. Now if you open http://host:8761/, you should see spring-eureka page and registered application instances.
+
+**4. Testing with Rest Client**
+It is same as described in (6) at section "Running without docker in amazon cloud".
