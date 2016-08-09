@@ -2,7 +2,7 @@
 
 A sample to demo microservices core components i.e centralized configuration server, registry server, service and service client. It has following components :
 
-1. sample-config : Spring-boot based centralized configuration server for microservices. All other microservices retrive their configuration properties from here.
+1. sample-config : Spring-boot based centralized configuration server for microservices. All other microservices retrieve their configuration properties from here.
 
 2. sample-registration : A centralized registration server, developed using Spring-Netflix-Eureka. Every microservice when it starts it gets register with this registeration server. It provides web-gui where we can see registered services and how many instances are running for each microservice.
 
