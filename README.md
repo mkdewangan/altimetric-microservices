@@ -42,7 +42,7 @@ In command shell go to altimetric-microservices/sample-config folder and run :  
 
 In command shell go to   altimetric-microservices/sample-todo-service folder and run : " nohup mvn spring-boot:run &". It will start configuration server and register it with eureka. Now if you refresh the spring-eureka page at http://host:8761/, you should see one instance of application TO-DO-APP in registered application list.
 
-**5. Start To-DO Client App**
+**5. Start To-Do Client App**
 
 In command shell go to   altimetric-microservices/sample-todo-client folder and run : " nohup mvn spring-boot:run &". It will start configuration server and register it with eureka. Now if you refresh the spring-eureka page at http://host:8761/, you should see one instance of application TO-DO-APP-CLIENT in registered application list.
 
